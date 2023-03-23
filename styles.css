@@ -2,10 +2,24 @@
 
 
 /* css reset */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+:root{
+    --text-primary: #fff;
+    --text-secundary: #000;
+    --font-heading: 'Poppins';
+    --font-default: 'Montserrat';
+    /*Deixando o site acessivel, dividindo 16 por essa porcentagem vai dar o valor em px*/
+    font-size: 62,5%;
+}
+
+body{
+    font-family: var(--font-default);
 }
 
 header {
@@ -13,31 +27,172 @@ header {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
-    background-image: url('./assets/imagem/principal.jpg');
-    background-size: cover;
     height: 100vh;
     padding-top: 12.5rem;
     padding-left: 7rem;
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
 }
 
-h1 {
-    font-size: 40px;
+header::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-image: url('./assets/imagem/principal.jpg');
+    background-size: cover;
+    animation: zoom 15s;
+}
+
+@keyframes zoom {
+    0%{
+        transform: scale(1.5);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+h1,h2,h3,h4 {
     font-weight: 900;
-    color: #FFF;
-    font-family: 'Poppins';
+    font-family: var(--font-heading);
 }
-
+h1{
+    font-size: 4rem;
+}
+h2{
+    font-size: 2rem;
+}
 span {
-    font-size: 35px;
-    color: #FFF;
-    font-family: 'Montserrat';
+    font-size: 3.5rem;
+}
+p{
+    font-size: 1.5rem;
 }
 
-a {
+.botao {
     color: #FFF;
     font-size: 1.9rem;
     text-decoration: none;
     background: linear-gradient(90deg, #6a3093, #a044ff);
     padding: 1rem 2rem;
-    border-radius: 7px;
+    border-radius: 9px;
+    text-align: center;
+}
+
+.botao:hover{
+    color:#000
+    opacity: .8;
+
+}
+
+#avatar {
+    border-radius: 50%;
+    height: 300px;
+    width: 300px;
+}
+
+/* flex box */
+section {
+    display: flex;
+    gap: 2rem;
+    padding: 7rem;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#secao-projetos{
+    background-color: #212121;
+}
+
+#secao-projetos ul{
+    display: flex;
+    color: var(--text-primary);
+    gap: 2rem;
+}
+
+#secao-projetos li{
+    /*background-color: #ccc;*/
+    list-style: none;
+    max-width: 35rem;
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    cursor: pointer;
+}
+#secao-projetos li::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+#secao-projetos h3{
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    line-height: 3.3rem;
+    color: #a044ff;
+}
+
+#secao-projetos p{
+    font-size: 1.3rem;
+}
+
+.card-text{
+    opacity: 0;
+    transition: opacity 1s, top 1s;
+    margin-top: 20%;
+    position: absolute;
+}
+
+#secao-projetos li:hover .card-text{
+    opacity: 1;
+}
+
+#secao-orcamento{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100hv;
+    background-image: url('./assets/imagem/principal.jpg');
+    background-size: cover;
+}
+
+#secao-orcamento form{
+    display: grid;
+    grid-template-columns: 1fr auto;/*repeat (2 1fr)*/
+    background-color: #fff9;
+    border-radius: 10px;
+    backdrop-filter: blur(2px);
+    padding: 3rem;
+}
+
+#secao-orcamento form h3{
+    background-color: #6a3093;
+    color: white;
+    position:absolute;
+    top: -10%;
+    padding: 1rem 3rem;
+    border-radius: 10px;
+}
+
+#secao-orcamento form output{
+    grid-column: 2;
 }
